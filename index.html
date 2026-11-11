@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroFlow - Organizador de Rotinas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fundo animado com bolhas e formas 3D -->
+    <div class="aero-background">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+        <div class="bubble bubble-5"></div>
+        
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <header class="glass-header">
+        <h1>AeroFlow Rotinas</h1>
+        <p>Sincronize sua vida com fluidez</p>
+    </header>
+
+    <main class="cards-container">
+        <!-- Cards de Rotina -->
+        <div class="aero-card" data-title="Estudo" data-content="Horário para aprendizado contínuo. Revise matérias, leia artigos, faça cursos online e expanda seu conhecimento intelectual.">
+            <div class="card-icon">📚</div>
+            <h2>Estudo</h2>
+        </div>
+
+        <div class="aero-card" data-title="Trabalho" data-content="Foco e produtividade. Organize suas tarefas, responda e-mails, participe de reuniões e avance nos seus projetos profissionais.">
+            <div class="card-icon">💼</div>
+            <h2>Trabalho</h2>
+        </div>
+
+        <div class="aero-card" data-title="Lazer" data-content="Momento de descanso e entretenimento. Assista a um filme, jogue, passe tempo com a família e amigos, ou apenas relaxe.">
+            <div class="card-icon">🎮</div>
+            <h2>Lazer</h2>
+        </div>
+
+        <div class="aero-card" data-title="Hobby" data-content="Tempo dedicado às suas paixões. Pinte, toque um instrumento, escreva, cozinhe ou crie algo novo apenas pela diversão.">
+            <div class="card-icon">🎨</div>
+            <h2>Hobby</h2>
+        </div>
+
+        <div class="aero-card" data-title="Esportes" data-content="Movimente seu corpo. Vá à academia, corra, nade, jogue futebol ou pratique yoga. Manter-se ativo é essencial.">
+            <div class="card-icon">⚽</div>
+            <h2>Esportes</h2>
+        </div>
+
+        <div class="aero-card" data-title="Saúde" data-content="Cuidados com o bem-estar físico e mental. Meditação, consultas médicas, rotina de sono e alimentação balanceada.">
+            <div class="card-icon">🌿</div>
+            <h2>Saúde</h2>
+        </div>
+    </main>
+
+    <!-- Modal Frutiger Aero -->
+    <div id="routineModal" class="modal-overlay">
+        <div class="modal-box glass-panel">
+            <button class="close-btn">&times;</button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Título</h2>
+            </div>
+            <div class="modal-body">
+                <p id="modalContent">Detalhes da rotina aparecerão aqui.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Embutido -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.aero-card');
+            const modal = document.getElementById('routineModal');
+            const closeBtn = document.querySelector('.close-btn');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+
+            // Abrir modal ao clicar no card
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.getAttribute('data-title');
+                    const content = card.getAttribute('data-content');
+                    
+                    modalTitle.textContent = title;
+                    modalContent.textContent = content;
+                    
+                    modal.classList.add('active');
+                });
+            });
+
+            // Fechar modal ao clicar no botão 'X'
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+            // Fechar modal ao clicar fora da caixa (no fundo overlay)
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
